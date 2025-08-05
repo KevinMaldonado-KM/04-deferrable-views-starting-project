@@ -1,27 +1,98 @@
-# Defer
+# 🚀 Angular Deep Dive – Deferrable Views
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+Projet Angular développé dans le cadre de la section "Deferrable Views" de la formation _The Complete Guide (2025 Edition)_.
 
-## Development server
+## 🎯 Objectif
+Mettre en œuvre les concepts fondamentaux liés aux **Deferrable Views** Angular :
+- Configuration de **blocs @defer** avec différents triggers d'activation
+- **Lazy Loading** de composants pour optimiser les performances initiales
+- Utilisation des **triggers** (`on interaction`, `on hover`, `on viewport`) pour charger du contenu à la demande
+- **Prefetching** avec `prefetch on hover` pour améliorer l'expérience utilisateur
+- Gestion des états de chargement avec **@placeholder** et **@loading**
+- Optimisation des performances en différant le rendu de contenus non critiques
+- Amélioration du **Core Web Vitals** et du temps de chargement initial
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🔍 Fonctionnalités
 
-## Code scaffolding
+### 📱 Contenu principal
+- ✅ Affichage immédiat du contenu principal (sections d'information)
+- 📊 Images optimisées pour le chargement rapide
+- 📝 Texte informatif sur Angular et le cours
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### ⚡ Chargement différé intelligent
+- 🎯 **Component `offer-preview`** chargé uniquement sur interaction utilisateur
+- 🖱️ **Prefetch au survol** pour une expérience fluide
+- 💫 **Placeholder** pendant le chargement avec message informatif
+- 🔄 Trigger `on interaction` pour éviter le chargement non nécessaire
 
-## Build
+### 🚀 Optimisation des performances
+- 📦 **Bundle splitting** automatique avec les Deferrable Views
+- ⚡ Réduction du **First Contentful Paint (FCP)**
+- 🎮 Chargement à la demande basé sur l'interaction utilisateur
+- 💾 **Préchargement intelligent** pour améliorer la réactivité
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧩 Concepts techniques mis en œuvre
 
-## Running unit tests
+### Configuration des Deferrable Views
+```html
+@defer(on interaction; prefetch on hover) {
+  <app-offer-preview />
+} @placeholder {
+  <p class="fallback">Loading offer preview...</p>
+}
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Types de triggers disponibles
+- **`on interaction`** : Se déclenche lors du premier clic ou focus clavier
+- **`on hover`** : Se déclenche au survol de la souris
+- **`on viewport`** : Se déclenche quand l'élément entre dans le viewport
+- **`on idle`** : Se déclenche quand le navigateur est inactif
+- **`on timer`** : Se déclenche après un délai spécifié
 
-## Running end-to-end tests
+### Prefetching intelligent
+```html
+@defer(on interaction; prefetch on hover) {
+  <!-- Le composant sera préchargé au survol mais rendu à l'interaction -->
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### États de chargement
+- **@placeholder** : Contenu affiché avant le chargement
+- **@loading** : Contenu affiché pendant le chargement
+- **@error** : Contenu affiché en cas d'erreur
 
-## Further help
+## 🎨 Architecture du projet
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 📁 Structure des composants
+- `WelcomeComponent` : Composant principal avec contenu immédiat
+- `OfferPreviewComponent` : Composant différé chargé à la demande
+- Utilisation des **standalone components** Angular 18
+
+### 🎯 Stratégie de chargement
+- Contenu critique rendu immédiatement
+- Composants secondaires différés avec triggers appropriés
+- Préchargement intelligent pour optimiser l'expérience
+
+---
+
+## 🧱 Stack
+- Angular 18 (standalone components, Deferrable Views)
+- TypeScript avec types stricts
+- CSS moderne pour le styling
+- Optimisations de performance natives Angular
+
+## 🚀 Lancement
+```bash
+npm install
+ng serve
+```
+
+L'application sera accessible sur `http://localhost:4200`
+
+---
+
+## 🔗 Liens utiles
+
+- [👉 Formation Udemy](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
+- [📚 Documentation Angular Deferrable Views](https://angular.io/guide/defer)
+- [👤 Mon profil LinkedIn](https://www.linkedin.com/in/kevin-maldonado-km)
