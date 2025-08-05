@@ -41,8 +41,8 @@
   </p>
 </section>
 
-@defer(on viewport) {
+@defer(on interaction) {
   <app-offer-preview />
 } @placeholder {
-  <p>Loading offer preview...</p>
+  <p class="fallback">Loading offer preview...</p>
 }
